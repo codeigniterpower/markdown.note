@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>markdown notepad</title>
+
+  <link href='notepad.css' rel='stylesheet'>
+  <link href='markdown.css' rel='stylesheet'>
+   
+  <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+  <script src='notepad.js'></script>
+</head>
+<body>
+ 
+
+<table width='100%'>
+ <colgroup>
+   <col width='50%'>
+   <col width='50%'>
+ </colgroup>
+ <tr>
+   <td>
+     <!-- first column -->
+
+<div id='input'>
+     <!-- <%= @welcome_markdown %> -->
+    <textarea id='notepad' name='text' style='width: 100%; min-height: 500px;'>
+    </textarea>
+</div>
+
+   </td>
+   <td style='vertical-align: top;'>
+     <!-- second column -->
+
+<div id='output' class='markdown' style='width:100%; padding-left: 10px;'>
+   <!-- <%= @welcome_html %> -->
+</div>
+
+   <!--  <%= @welcome_html %> -->
+ <textarea id='output-source' style='display: none; width: 100%; min-height: 500px;'>
+ </textarea>
+
+  <div id='loading' style='display: none;'></div>
+ 
+   </td>
+ </tr>
+ <tr>
+  <td>
+    <!-- first column -->
+    
+    <!--
+    <span>
+      Use
+       <select id='notepad-lib' name='lib'>
+         <% Markdown.libs.each_with_index do |lib,i| %>
+           <option value='<%= lib %>'
+               <% if i == 0 %>
+                  selected='selected'
+               <% end %> >
+             <%= lib %></option>
+          <% end %>
+       </select>
+    </span>
+      -->
+
+    <a href='#' onclick='process_markdown();'>[ Update ]</a>
+
+  </td>
+  <td><!-- second column -->
+    <a id='toggle-output' href='#' onclick='toggle_output();'>[ Show HTML ]</a>
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
+
