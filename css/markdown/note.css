@@ -17,7 +17,7 @@ a#input-toggle, a#input-toggle:visited, a#input-toggle:hover {
 
 
 
-#input #notepad {
+#input #note {
    width: 100%; min-height: 400px;
 
     -moz-box-sizing: border-box;
