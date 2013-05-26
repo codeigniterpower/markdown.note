@@ -35,6 +35,12 @@ var markdown_notepad_new = function( opts ) {
      input:         '#notepad',
      input_lib:     '#notepad-lib',
 
+     input_toggle: {
+       id: '#input-toggle',
+       label_black: '[ Use Black Color Theme]',
+       label_white: '[ Use White Color Theme]'
+     },
+
      engines:  engines,
      
      welcome:  welcome
@@ -52,11 +58,12 @@ var markdown_notepad_new = function( opts ) {
         $output_toggle,
         $output_update,
         $input,
-        $input_lib;
+        $input_lib,
+        $input_toggle;
 
 
     var show_html = false;
-
+    var use_white_color_theme = false;
 
     function toggle_output()
     {
@@ -71,6 +78,24 @@ var markdown_notepad_new = function( opts ) {
         $output_toggle.html( settings.output_toggle.label_show );
         $output.show();
         $output_source.hide();
+      }
+    }
+
+
+    function _toggle_color_theme()
+    {
+   /**
+     *  todo: move to addon?? out of "core"
+     */
+ 
+      use_white_color_theme = !use_white_color_theme;
+      if( use_white_color_theme ) {
+        $input.removeClass( 'black' );
+        $input_toggle.html( settings.input_toggle.label_black );
+      }
+      else {
+        $input.addClass( 'black' );
+        $input_toggle.html( settings.input_toggle.label_white );
       }
     }
 
@@ -102,6 +127,8 @@ var markdown_notepad_new = function( opts ) {
      $input         = $( settings.input );
      $input_lib     = $( settings.input_lib );
 
+     $input_toggle  = $( settings.input_toggle.id );
+
      $input.val( settings.welcome.markdown );
 
      $output.html( settings.welcome.html );
@@ -110,6 +137,8 @@ var markdown_notepad_new = function( opts ) {
 
      $output_update.click( function() { update_output(); } );
      $output_toggle.click( function() { toggle_output(); } );
+
+     $input_toggle.click( function() { _toggle_color_theme(); } );
      
      // add markdown engine/lib options
      var markdown_opts = '';

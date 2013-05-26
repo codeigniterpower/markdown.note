@@ -1,32 +1,67 @@
 
 body {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   background-color: #EEEEEC;
   }
 
- a, a:visited  {
-  color: #8B0000;
+/***********
+ * fix: use scss or less; cleanup css
+ *
+ ****/
+
+
+a#output-toggle, a#output-toggle:visited, a#output-toggle:hover,
+a#output-update, a#output-update:visited, a#output-update:hover,
+a#input-toggle, a#input-toggle:visited, a#input-toggle:hover {
+  color: black;
   text-decoration: none; }
-
-  a:hover {
-    color:  #8B0000;
-    background-color: gold;
-    text-decoration: underline; }
-
 
 
 
 #input #notepad {
    width: 100%; min-height: 400px;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-#output {
-   width: 100%; padding-left: 10px;
+
+.black {
+    background-color: #2E3436;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    padding: 6px;
+    color: #FFFFFF;
+    font-weight: bold;
 }
+
+
+#output {
+   width: 100%;
+   /* padding-left: 10px; */
+   background-color: white;
+   border-radius: 4px 4px 4px 4px;
+   padding: 6px;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 
 #output-source {
    display: none;
    width: 100%; min-height: 400px;
+   background-color: #EEEEEC;
+   border: none;
+   
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+
 
 #loading {
    display: none;
