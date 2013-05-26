@@ -9,9 +9,16 @@
    
   <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
   <script src='notepad.js'></script>
+  <script>
+    $(document).ready( function () {
+      
+      var notepad = markdown_notepad_new();
+
+    });
+  </script>
 </head>
 <body>
- 
+
 
 <table width='100%'>
  <colgroup>
@@ -63,15 +70,14 @@
     </span>
       -->
 
-    <a href='#' onclick='process_markdown();'>[ Update ]</a>
+    <a id='output-update' href='#'>[ Update ]</a>
 
   </td>
   <td><!-- second column -->
-    <a id='toggle-output' href='#' onclick='toggle_output();'>[ Show HTML ]</a>
+    <a id='output-toggle' href='#'>[ Show HTML ]</a>
   </td>
  </tr>
 </table>
 
 </body>
 </html>
-
