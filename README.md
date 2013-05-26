@@ -5,8 +5,7 @@ Another simple single-page, server-less Markdown editor in JavaScript & Hypertex
 ## Live Demo
 
 Try the `markdown-notepad` running
-on Heroku [`hypertext.herokuapp.com`](http://hypertext.herokuapp.com).
-
+on Heroku [`hypertext.herokuapp.com/notepad/notepad.html`](http://hypertext.herokuapp.com/notepad/notepad.html).
 
 
 
@@ -18,7 +17,7 @@ for its builtin web service/server.
 
 ## Alternatives
 
-
+TBD
 
 ## License
 
