@@ -1,52 +1,25 @@
 
 
-function get_dingus_worker( api_url, api_params, handle_html )
-{
-  var api_params_str = $.param( api_params );
-  api_params_str += '&callback=?'  // NB: add callback for jquery jsonp; NB: need to append as string to avoid encoding of =?
-
-  $.getJSON( api_url, api_params_str, function( data ) {
-    handle_html( data.html );    // NB: assumes response { 'html': 'markup here' }
-  });
-}
-
-function process_markdown_ruby( text, handle_html )
-{
-  var api_params = {
-    text: text
-  }
-  var api_url = 'http://hypertext.herokuapp.com/markdown/dingus';
- 
-  get_dingus_worker( api_url, api_params, handle_html );
-}
-
-
-function process_markdown_pandoc( text, handle_html )
-{
-  // NB: note jsonp enabled - no cross domain request possible; use proxy server or similar
-  //   todo: find other service
-  var api_params = {
-    text: text,
-    url: 'http://johnmacfarlane.net/cgi-bin/pandoc-dingus'
-  }
-   
-  var api_url = 'http://hypertext.herokuapp.com/proxy'
-
-  get_dingus_worker( api_url, api_params, handle_html );
-}
-
-
-
 var markdown_notepad_new = function( opts ) {
-    
+
     // use module pattern (see JavaScript - The Good Parts)
 
     var engines = [
-      {
-         name:    'Standard',
-         markdown: process_markdown_ruby
-      }
+      { name:    'Standard (Online)',  markdown: markdown_apis.ruby  },
+      { name:    'kramdown (Online)',  markdown: markdown_apis.ruby_kramdown },
+      { name:    'Redcarpet (Online)', markdown: markdown_apis.ruby_redcarpet },
+      { name:    'Maruku (Online)',    markdown: markdown_apis.ruby_maruku },
+      { name:    'BlueCloth (Online)', markdown: markdown_apis.ruby_bluecloth }
     ];
+
+    var welcome = {
+        markdown: "Welcome to Markdown. We hope you **really** enjoy using this."+
+      "\n\n"+
+      "Just type some [markdown](http://daringfireball.net/projects/markdown) on the left and see it on the right. *Simple as that.*",
+        html:     "<p>Welcome to Markdown</a>. We hope you <strong>really</strong> enjoy using this.</p>" +
+                  "<p>Just type some <a href='http://daringfireball.net/projects/markdown'>markdown</a> on the left and see it on the right. <em>Simple as that.</em></p>"
+      }
+
 
     var settings;  // NB: defaults + opts merged => settings
     
@@ -60,13 +33,18 @@ var markdown_notepad_new = function( opts ) {
      output_update: '#output-update',
 
      input:         '#notepad',
-     input_lib:     '#notepad-lib'
+     input_lib:     '#notepad-lib',
+
+     engines:  engines,
+     
+     welcome:  welcome
     }
 
 
     function _debug( msg )
     {
-       // console.log( "[debug] " + msg );
+      if(window.console && window.console.log )
+        window.console.log( "[debug] " + msg );
     }
 
     var $output,
@@ -80,7 +58,7 @@ var markdown_notepad_new = function( opts ) {
     var show_html = false;
 
 
-    function _toggle_output()
+    function toggle_output()
     {
       show_html = !show_html;
     
@@ -97,11 +75,12 @@ var markdown_notepad_new = function( opts ) {
     }
 
 
-    function _update_output()
+    function update_output()
     {
       var text = $input.val();  // get markdown text
+      var engine_index = parseInt( $input_lib.val(), 10);
 
-      var engine = engines[0];
+      var engine = settings.engines[engine_index];
 
       engine.markdown( text, function( html ) {
          $output.html( html );
@@ -121,15 +100,33 @@ var markdown_notepad_new = function( opts ) {
      $output_toggle = $( settings.output_toggle.id );
 
      $input         = $( settings.input );
+     $input_lib     = $( settings.input_lib );
 
-     $output_update.click( function() { _update_output(); } );
-     $output_toggle.click( function() { _toggle_output(); } );
+     $input.val( settings.welcome.markdown );
+
+     $output.html( settings.welcome.html );
+     $output_source.html( settings.welcome.html );
+
+
+     $output_update.click( function() { update_output(); } );
+     $output_toggle.click( function() { toggle_output(); } );
+     
+     // add markdown engine/lib options
+     var markdown_opts = '';
+     $.each( engines, function(index, engine) {
+        markdown_opts += '<option value="' + index + '"';
+        if( index == 0 ) {
+          markdown_opts += 'selected="selected"'
+        }
+        markdown_opts += '>' + engine.name + '</option>';
+     });
+     $input_lib.html( markdown_opts );
    }
 
    _init( opts );
    
     return {
-      update: _update_output,
-      toggle: _toggle_output
+      update: update_output,
+      toggle: toggle_output
     }
 } // fn markdown_notepad_new

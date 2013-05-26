@@ -11,3 +11,24 @@ body {
     color:  #8B0000;
     background-color: gold;
     text-decoration: underline; }
+
+
+
+
+#input #notepad {
+   width: 100%; min-height: 400px;
+}
+
+#output {
+   width: 100%; padding-left: 10px;
+}
+
+#output-source {
+   display: none;
+   width: 100%; min-height: 400px;
+}
+
+#loading {
+   display: none;
+}
+
