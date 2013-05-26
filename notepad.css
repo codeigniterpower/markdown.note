@@ -9,7 +9,6 @@ body {
  *
  ****/
 
-
 a#output-toggle, a#output-toggle:visited, a#output-toggle:hover,
 a#output-update, a#output-update:visited, a#output-update:hover,
 a#input-toggle, a#input-toggle:visited, a#input-toggle:hover {
@@ -62,8 +61,10 @@ a#input-toggle, a#input-toggle:visited, a#input-toggle:hover {
 }
 
 
-
-#loading {
-   display: none;
+#output-loading {
+  display: none;
+  width: 21px;
+  height: 5px;
+  background: url('i/dots-white.gif') no-repeat;
+  /* -webkit-transition: all 0.1s linear; */
 }
-

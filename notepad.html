@@ -45,14 +45,13 @@
 
       <div id='output' class='markdown'></div>
       <textarea id='output-source' readonly='readonly'></textarea>
-      <div id='loading'></div>
 
    </td>
  </tr>
  <tr>
   <td>
     <!-- first column -->
-    
+
     <span>
       Use <select id='notepad-lib'></select>
     </span>
@@ -60,10 +59,13 @@
     <a id='output-update' href='#'>[ Update ]</a>
     <a id='input-toggle' href='#'>[ Use White Color Theme ]</a>
 
+     <!-- nb: div will break/start new line -->
+     <div id='output-loading'></div>
   </td>
-  <td>
+  <td style='vertical-align: top;'>
      <!-- second column -->
      <a id='output-toggle' href='#'>[ Show HTML ]</a>
+     
   </td>
  </tr>
 </table>

@@ -5,14 +5,14 @@ var markdown_notepad_new = function( opts ) {
     // use module pattern (see JavaScript - The Good Parts)
 
     var engines = [
-      { name:    'Standard (Offline)', markdown: markdown_libs.showdown },
-      { name:    'Standard (Online)',  markdown: markdown_apis.ruby  },
-      { name:    'JavaScript - Showdown (Offline)', markdown: markdown_libs.showdown },
-      { name:    'JavaScript - pagedown (Offline)', markdown: markdown_libs.pagedown },
-      { name:    'Ruby - kramdown (Online)',  markdown: markdown_apis.ruby_kramdown },
-      { name:    'Ruby - Redcarpet (Online)', markdown: markdown_apis.ruby_redcarpet },
-      { name:    'Ruby - Maruku (Online)',    markdown: markdown_apis.ruby_maruku },
-      { name:    'Ruby - BlueCloth (Online)', markdown: markdown_apis.ruby_bluecloth }
+      { name:    'Standard (Offline)', online: false, markdown: markdown_libs.showdown },
+      { name:    'Standard (Online)',  online: true,  markdown: markdown_apis.ruby  },
+      { name:    'JavaScript - Showdown (Offline)', online: false, markdown: markdown_libs.showdown },
+      { name:    'JavaScript - pagedown (Offline)', online: false, markdown: markdown_libs.pagedown },
+      { name:    'Ruby - kramdown (Online)',  online: true, markdown: markdown_apis.ruby_kramdown },
+      { name:    'Ruby - Redcarpet (Online)', online: true, markdown: markdown_apis.ruby_redcarpet },
+      { name:    'Ruby - Maruku (Online)',    online: true, markdown: markdown_apis.ruby_maruku },
+      { name:    'Ruby - BlueCloth (Online)', online: true, markdown: markdown_apis.ruby_bluecloth }
     ];
 
     var welcome = {
@@ -33,10 +33,11 @@ var markdown_notepad_new = function( opts ) {
        id: '#output-toggle',
        label_show: '[ Show HTML ]',
        label_hide: '[ Hide HTML ]' },
-     output_update: '#output-update',
+     output_update:  '#output-update',    // a/link for update action
+     output_loading: '#output-loading',   // div for loading gif anim
 
-     input:         '#notepad',
-     input_lib:     '#notepad-lib',
+     input:         '#notepad',            // textarea for markdown source
+     input_lib:     '#notepad-lib',        // select inputbox for markdown libs/engines
 
      input_toggle: {
        id: '#input-toggle',
@@ -60,6 +61,7 @@ var markdown_notepad_new = function( opts ) {
         $output_source,
         $output_toggle,
         $output_update,
+        $output_loading,
         $input,
         $input_lib,
         $input_toggle;
@@ -110,9 +112,13 @@ var markdown_notepad_new = function( opts ) {
 
       var engine = settings.engines[engine_index];
 
+      if( engine.online === true )
+         $output_loading.show();
+
       engine.markdown( text, function( html ) {
          $output.html( html );
          $output_source.html( html );
+         $output_loading.hide();
       });
     }
 
@@ -122,10 +128,11 @@ var markdown_notepad_new = function( opts ) {
      settings = $.extend( {}, defaults, opts );
 
 
-     $output        = $( settings.output );
-     $output_source = $( settings.output_source );
-     $output_update = $( settings.output_update );
-     $output_toggle = $( settings.output_toggle.id );
+     $output         = $( settings.output );
+     $output_source  = $( settings.output_source );
+     $output_update  = $( settings.output_update );
+     $output_toggle  = $( settings.output_toggle.id );
+     $output_loading = $( settings.output_loading );
 
      $input         = $( settings.input );
      $input_lib     = $( settings.input_lib );
