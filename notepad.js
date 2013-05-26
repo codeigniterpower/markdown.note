@@ -5,11 +5,14 @@ var markdown_notepad_new = function( opts ) {
     // use module pattern (see JavaScript - The Good Parts)
 
     var engines = [
+      { name:    'Standard (Offline)', markdown: markdown_libs.showdown },
       { name:    'Standard (Online)',  markdown: markdown_apis.ruby  },
-      { name:    'kramdown (Online)',  markdown: markdown_apis.ruby_kramdown },
-      { name:    'Redcarpet (Online)', markdown: markdown_apis.ruby_redcarpet },
-      { name:    'Maruku (Online)',    markdown: markdown_apis.ruby_maruku },
-      { name:    'BlueCloth (Online)', markdown: markdown_apis.ruby_bluecloth }
+      { name:    'JavaScript - Showdown (Offline)', markdown: markdown_libs.showdown },
+      { name:    'JavaScript - pagedown (Offline)', markdown: markdown_libs.pagedown },
+      { name:    'Ruby - kramdown (Online)',  markdown: markdown_apis.ruby_kramdown },
+      { name:    'Ruby - Redcarpet (Online)', markdown: markdown_apis.ruby_redcarpet },
+      { name:    'Ruby - Maruku (Online)',    markdown: markdown_apis.ruby_maruku },
+      { name:    'Ruby - BlueCloth (Online)', markdown: markdown_apis.ruby_bluecloth }
     ];
 
     var welcome = {
@@ -148,6 +151,8 @@ var markdown_notepad_new = function( opts ) {
           markdown_opts += 'selected="selected"'
         }
         markdown_opts += '>' + engine.name + '</option>';
+        
+        _debug( 'add markdown engine [' + index + ']: ' + engine.name );
      });
      $input_lib.html( markdown_opts );
    }
