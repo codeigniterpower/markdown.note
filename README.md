@@ -10,7 +10,7 @@ on GitHub Pages [`geraldb.github.io/markdown-note/note.html`](http://geraldb.git
 
 ## Real World Usage
 
-The [`markdown`](https://github.com/gerald/markdown) Ruby gem
+The [`markdown`](https://github.com/geraldb/markdown) Ruby gem
 lets you use your markdown library of choice in Ruby - includes Markdown Note
 for its builtin web service/server.
 
