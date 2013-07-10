@@ -4,8 +4,8 @@ Another simple single-page, server-less Markdown editor in JavaScript & Hypertex
 
 ## Live Demo
 
-Try Markdown Note running
-on Heroku [`note.herokuapp.com/note.html`](http://note.herokuapp.com/note.html).
+Try the Markdown Note running
+on GitHub Pages [`geraldb.github.io/markdown-note/note.html`](http://geraldb.github.io/markdown-note/note.html).
 
 
 ## Real World Usage
