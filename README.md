@@ -36,3 +36,9 @@ That's it. Enjoy.
 
 The `markdown-note` scripts are dedicated to the public domain.
 Use it as you please with no restrictions whatsoever.
+
+
+## Questions? Comments?
+
+Send them along to the [Markdown Mailing List](http://six.pairlist.net/mailman/listinfo/markdown-discuss).
+Thanks!
