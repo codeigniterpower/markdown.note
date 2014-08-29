@@ -5,21 +5,28 @@ Another simple single-page, server-less Markdown editor in JavaScript & Hypertex
 ## Live Demo
 
 Try Markdown Note running
-on GitHub Pages [`writekit.github.io/markdown.note/note.html`](http://writekit.github.io/markdown.note/note.htmll).
+on GitHub Pages [`writekit.github.io/markdown.note/note.html`](http://writekit.github.io/markdown.note/note.html).
 
 
 ## How to use
 
-Get a copy of the repo
+### Step 1: Get a copy of the repo
 
-1) Use git clone 
+Option 1) Use git clone
+
+~~~
+$ git clone 
+~~~
 
 or 
 
-2) Unzip the archive 
+Option 2) Use ZIP archive
 
-Open the note.html page in your browser. Enjoy.
+Download a copy of the zip archive. Look for the "Download ZIP" button on this page on the right side at the bottom of the "<> Code" tab. If you can't find the "Download ZIP" button, use the [markdown.note/archive/master.zip](https://github.com/writekit/markdown.note/archive/master.zip) link.
 
+### Step 2: Open the note.html page in your web browser
+
+That's it. Enjoy.
 
 
 ## License
