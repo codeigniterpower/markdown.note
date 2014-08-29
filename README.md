@@ -5,18 +5,21 @@ Another simple single-page, server-less Markdown editor in JavaScript & Hypertex
 ## Live Demo
 
 Try Markdown Note running
-on GitHub Pages [`geraldb.github.io/markdown-note/note.html`](http://geraldb.github.io/markdown-note/note.html).
+on GitHub Pages [`writekit.github.io/markdown.note/note.html`](http://writekit.github.io/markdown.note/note.htmll).
 
 
-## Real World Usage
+## How to use
 
-The [`markdown`](https://github.com/geraldb/markdown) Ruby gem
-lets you use your markdown library of choice in Ruby - includes Markdown Note
-for its builtin web service/server.
+Get a copy of the repo
 
-## Alternatives
+1) Use git clone 
 
-- [Markdownr](http://markdownr.com/) [[Source]](https://github.com/soffes/markdownr.com) - simple Markdown notepad wrapped into a Rails web app; by Sam Soffes
+or 
+
+2) Unzip the archive 
+
+Open the note.html page in your browser. Enjoy.
+
 
 
 ## License
