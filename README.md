@@ -25,7 +25,7 @@ Option 2) Use zip archive
 Download a copy of the zip archive and unzip it.
 
 Note: Look for the "Download ZIP" button on this page on the right side at the bottom of the "<> Code" tab. 
-If you can't find the "Download ZIP" button, use the [`markdown.note/archive/master.zip`](https://github.com/writekit/markdown.note/archive/master.zip) link.
+If you can't find the "Download ZIP" button, use the [`markdown.note/archive/gh-pages.zip`](https://github.com/writekit/markdown.note/archive/gh-pages.zip) link.
 
 ### Step 2: Open the `note.html` page in your web browser
 
